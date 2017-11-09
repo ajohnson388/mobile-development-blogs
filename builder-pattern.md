@@ -1,11 +1,11 @@
-# Builder Pattern
+# Simple Builder Pattern
 
 ### Intro
 
-The builder pattern helps stabilize the API for creating an immutable object. The API in this case would be the constructor or factory method. If an object is immutable, its parameters must be defined at the point of creation. The naive approach would be to create a constructor that accepts and defines all of its initial parameters. With simple objects that cannot have default parameters, 
-    this is the only approach. However, consider a complex immutable object that can have default parameters. If we were to take the naive approach,
-    the method signature of the constructor would break everytime we add a new optional parameter. This can be cumbersome to the client, especially if
-    they could just fall back on a default value. The builder class stabilizes the API by wrapping up all of the parameters that can have default values, into a 'Builder' object.
+The builder pattern, a type of creational pattern, is a solution to stabilizing the API for creating an immutable object. The API in this case would be a constructor that creates the immutable object. If an object is immutable, its parameters must be defined at the point of creation. The simple approach is to create a constructor that requires all of its initial parameters in a single method signature, explicitly. With simple immutable objects that cannot have default parameters, 
+    this is the only approach. However, consider a complex immutable object that can have default parameters. If we were to take only simple approach,
+    the method signature of the constructor would break everytime a new optional parameter is added (Since it must be explicitly defined). In most cases where there is a candidate default value, the client would not need to update its code, unless it explicitly wants to use the new features. The builder class stabilizes the API by wrapping up all of the parameters that can have default values, into a 'Builder' object.
+
 
 ### Example: Pizza Builder
 
@@ -15,22 +15,21 @@ allows us to add new toppings without breaking the API. This makes sense because
 be default value for a topping, its either there or not. Furthermore, making the pizza an immutable object
 makes sense because the order should not be altered after its created.
 
-Java:
 
-public final class Pizza {
-    
-    final boolean pepperoni;
-    final boolean onions;
-    final boolean spinach;
-    final boolean olives;
+Code Definition:
 
-    protected Pizza(final Pizza.Builder builder) {
-        pepperoni = builder.pepperoni
-        onions = builder.onions;
-        spinach = builder.spinach;
-    }
+Java | Swift  // TODO: Integrate code
 
-    public static final Builder {
-        
-    }
-}
+
+Code Example Use:
+
+Jave | Swift  // TODO: Integrate code
+
+
+### Conclusion (When to use)
+
+So when should you use the builder pattern? 
+
+Only, if you create an object that is immutable.
+Definitely, if it contains an unpredicatable amount of optional properties. 
+Optionally, if it surpasses the number of optional constructor parameters that makes you uncomfortable.
